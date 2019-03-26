@@ -14,18 +14,15 @@ import java.util.List;
 class OpenCSVreader {
 
     String fileName;
-
     OpenCSVreader(String fileName){
         this.fileName=fileName;
     }
-
 
     public List<String> read() throws IOException{
 
         try(
                 Reader reader = Files.newBufferedReader(Paths.get(fileName));
                 CSVReader csvReader = new CSVReader(reader,';');
-
                 )
         {
 
@@ -40,9 +37,7 @@ class OpenCSVreader {
                     locationList.add(nextRecord[3]);
                     locationList.add(nextRecord[4]);
                     locationList.add(nextRecord[5]);
-
                 }
-
             return locationList;
         }
 

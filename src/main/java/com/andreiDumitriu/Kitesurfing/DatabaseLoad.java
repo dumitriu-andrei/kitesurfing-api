@@ -16,7 +16,9 @@ class DatabaseLoad{
 
     @Bean
     CommandLineRunner initDatabase(LocationRepository repository){
+
         return args -> {
+
             String fileName="C:/Users/Andrei/Desktop/Kitesurfing/data.csv";
 
             OpenCSVreader reader = new OpenCSVreader(fileName);
@@ -30,7 +32,6 @@ class DatabaseLoad{
                                                                       Double.parseDouble(locList.get(i+2)),
                                                                       Integer.parseInt(locList.get(i+3)),
                                                                       locList.get(i+4),locList.get(i+5))));
-
             }
         };
 
