@@ -1,7 +1,11 @@
 package com.andreiDumitriu.Kitesurfing;
 
 import com.andreiDumitriu.Kitesurfing.model.Location;
+import com.andreiDumitriu.Kitesurfing.model.Role;
+import com.andreiDumitriu.Kitesurfing.model.User;
 import com.andreiDumitriu.Kitesurfing.repositories.LocationRepository;
+import com.andreiDumitriu.Kitesurfing.repositories.RoleRepository;
+import com.andreiDumitriu.Kitesurfing.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.boot.CommandLineRunner;
@@ -17,7 +21,7 @@ import java.util.List;
 class DatabaseLoad{
 
     @Bean
-    CommandLineRunner initDatabase(LocationRepository repository){
+    CommandLineRunner initDatabase(LocationRepository repository,UserRepository userRep){
 
         return args -> {
 
@@ -29,13 +33,14 @@ class DatabaseLoad{
             locList = reader.read();
 
             for(int i=0;i<locList.size();i=i+6) {
-                repository.save(new Location(locList.get(i),
+                log.info("Preloading: "+repository.save(new Location(locList.get(i),
                           Double.parseDouble(locList.get(i+1)),
                           Double.parseDouble(locList.get(i+2)),
                           Integer.parseInt(locList.get(i+3)),
-                          locList.get(i+4),locList.get(i+5)));
+                          locList.get(i+4),locList.get(i+5))));
             }
         };
 
     }
+
 }

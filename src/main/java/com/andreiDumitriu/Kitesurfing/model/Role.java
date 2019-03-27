@@ -2,6 +2,7 @@ package com.andreiDumitriu.Kitesurfing.model;
 
 
 import lombok.Data;
+import org.springframework.ui.Model;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -17,5 +18,10 @@ public class Role {
 
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
+
+    public Role(String name){
+        this.name = name;
+
+    }
 
 }
