@@ -29,11 +29,11 @@ class DatabaseLoad{
             locList = reader.read();
 
             for(int i=0;i<locList.size();i=i+6) {
-                log.info("Preloading " + repository.save(new Location(locList.get(i),
-                                                                      Double.parseDouble(locList.get(i+1)),
-                                                                      Double.parseDouble(locList.get(i+2)),
-                                                                      Integer.parseInt(locList.get(i+3)),
-                                                                      locList.get(i+4),locList.get(i+5))));
+                repository.save(new Location(locList.get(i),
+                          Double.parseDouble(locList.get(i+1)),
+                          Double.parseDouble(locList.get(i+2)),
+                          Integer.parseInt(locList.get(i+3)),
+                          locList.get(i+4),locList.get(i+5)));
             }
         };
 
