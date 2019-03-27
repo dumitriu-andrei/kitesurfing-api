@@ -1,18 +1,17 @@
-package com.andreiDumitriu.Kitesurfing;
+package com.andreiDumitriu.Kitesurfing.controllers;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
+import com.andreiDumitriu.Kitesurfing.LocationNotFoundException;
+import com.andreiDumitriu.Kitesurfing.repositories.LocationRepository;
+import com.andreiDumitriu.Kitesurfing.model.Location;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 
 @RestController
-class LocationController {
+public class LocationController {
 
         private final LocationRepository repository;
 

@@ -1,16 +1,20 @@
-package com.andreiDumitriu.Kitesurfing;
+package com.andreiDumitriu.Kitesurfing.model;
 
 import lombok.Data;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Entity;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
 @Data
 @Entity
-class Location {
+public class Location {
 
-    private @Id @GeneratedValue Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     private String name;
     private Double longitude;
     private Double latitude;
@@ -18,7 +22,7 @@ class Location {
     private String country;
     private String whenToGo;
 
-    Location(String name,Double longitude,Double latitude,
+    public Location(String name,Double longitude,Double latitude,
              int windProb, String country, String whenToGo){
         this.name=name;
         this.longitude=longitude;

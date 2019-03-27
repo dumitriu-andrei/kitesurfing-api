@@ -1,8 +1,8 @@
 package com.andreiDumitriu.Kitesurfing;
 
-class LocationNotFoundException extends RuntimeException {
+public class LocationNotFoundException extends RuntimeException {
 
-    LocationNotFoundException(Long id){
+    public LocationNotFoundException(Long id){
         super("Could not find location "+id);
     }
 

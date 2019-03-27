@@ -1,5 +1,7 @@
 package com.andreiDumitriu.Kitesurfing;
 
+import com.andreiDumitriu.Kitesurfing.model.Location;
+import com.andreiDumitriu.Kitesurfing.repositories.LocationRepository;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.boot.CommandLineRunner;
