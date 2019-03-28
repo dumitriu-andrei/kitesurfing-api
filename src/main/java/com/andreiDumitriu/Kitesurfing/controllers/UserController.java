@@ -3,15 +3,21 @@ package com.andreiDumitriu.Kitesurfing.controllers;
 
 import com.andreiDumitriu.Kitesurfing.UserValidator;
 import com.andreiDumitriu.Kitesurfing.model.User;
+import com.andreiDumitriu.Kitesurfing.repositories.UserRepository;
 import com.andreiDumitriu.Kitesurfing.services.SecurityService;
 import com.andreiDumitriu.Kitesurfing.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class UserController {
@@ -23,6 +29,12 @@ public class UserController {
 
     @Autowired
     private UserValidator userValidator;
+
+    private final UserRepository repository;
+
+    UserController(UserRepository rep){
+        this.repository = rep;
+    }
 
     @GetMapping("/signup")
     public String signup(Model model){
@@ -42,12 +54,20 @@ public class UserController {
         userService.save(userForm);
         securityService.autoLogin(userForm.getUsername(),userForm.getPasswordConfirmation());
 
-        return "redirect:/welcome";
+        return "login";
 
     }
 
     @GetMapping("/login")
     public String login(Model model, String error, String logout){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if(!(auth instanceof AnonymousAuthenticationToken)){
+            String userName=auth.getName();
+
+            return userName;
+        }
+
         if (error != null){
             model.addAttribute("error","Your username and password is invalid");
         }
@@ -57,11 +77,6 @@ public class UserController {
         }
 
         return "login";
-    }
-
-    @GetMapping({"/","/welcome"})
-    public String welcome(Model model){
-        return "welcome";
     }
 
 
