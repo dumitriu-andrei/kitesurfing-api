@@ -45,12 +45,16 @@ public class UserInfoController {
     @GetMapping("/favorite/spots/{id}")
     public String deleteFavorite(@PathVariable("id") Long id){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            String currentUserName = authentication.getName();
-            Long userID=userRepo.getUserIdByName(currentUserName);
+        if (!(authentication instanceof AnonymousAuthenticationToken))
+            try{
+                String currentUserName = authentication.getName();
+                Long userID=userRepo.getUserIdByName(currentUserName);
 
             userRepo.deleteFavorite(id, userID);
-        }
+            }
+            catch(Exception e){
+                throw new BadFavoriteException(id);
+            }
 
         return "Succes!";
     }

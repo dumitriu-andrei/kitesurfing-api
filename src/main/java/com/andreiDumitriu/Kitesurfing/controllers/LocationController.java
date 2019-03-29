@@ -1,5 +1,6 @@
 package com.andreiDumitriu.Kitesurfing.controllers;
 
+import com.andreiDumitriu.Kitesurfing.errorHandling.CountryNotFoundException;
 import com.andreiDumitriu.Kitesurfing.errorHandling.LocationNotFoundException;
 import com.andreiDumitriu.Kitesurfing.errorHandling.WindNotFoundException;
 import com.andreiDumitriu.Kitesurfing.repositories.LocationRepository;
@@ -35,7 +36,12 @@ public class LocationController {
 
         @GetMapping("/spots/country/{country}")
         List<Location> uniqueCountry(@PathVariable String country){
-            return repository.uniqueCountry(country);
+            try {
+                return repository.uniqueCountry(country);
+            }
+            catch(Exception e){
+                throw new CountryNotFoundException(country);
+            }
         }
 
         @GetMapping("/spots/wind/{windProbability}")
