@@ -4,7 +4,6 @@ import com.andreiDumitriu.Kitesurfing.LocationNotFoundException;
 import com.andreiDumitriu.Kitesurfing.WindNotFoundException;
 import com.andreiDumitriu.Kitesurfing.repositories.LocationRepository;
 import com.andreiDumitriu.Kitesurfing.model.Location;
-import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;

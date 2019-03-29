@@ -2,6 +2,8 @@ package com.andreiDumitriu.Kitesurfing.model;
 
 import lombok.Data;
 
+
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
 
@@ -14,6 +16,12 @@ public class User {
 
     private String username;
     private String password;
+
+    @ManyToMany
+    @JoinTable(name="favorites",joinColumns = @JoinColumn(name="user_id",referencedColumnName = "id"),
+                                inverseJoinColumns = @JoinColumn(name="location_id",referencedColumnName = "id"))
+    private Set<Location> locations = new HashSet<>();
+
 
     @Transient
     private String passwordConfirmation;

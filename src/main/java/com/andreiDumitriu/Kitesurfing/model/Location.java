@@ -1,10 +1,10 @@
 package com.andreiDumitriu.Kitesurfing.model;
 
 import lombok.Data;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Entity;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Data
@@ -22,6 +22,9 @@ public class Location {
     private String country;
     private String whenToGo;
 
+    @ManyToMany(mappedBy = "locations")
+    private Set<User> users = new HashSet<>();
+
     public Location(String name,Double longitude,Double latitude,
              int windProb, String country, String whenToGo){
         this.name=name;
@@ -33,7 +36,7 @@ public class Location {
 
     }
 
-    Location(){}
+    public Location(){}
 
 
 
