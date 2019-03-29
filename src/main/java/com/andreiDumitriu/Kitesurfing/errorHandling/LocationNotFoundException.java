@@ -1,4 +1,4 @@
-package com.andreiDumitriu.Kitesurfing;
+package com.andreiDumitriu.Kitesurfing.errorHandling;
 
 public class LocationNotFoundException extends RuntimeException {
 

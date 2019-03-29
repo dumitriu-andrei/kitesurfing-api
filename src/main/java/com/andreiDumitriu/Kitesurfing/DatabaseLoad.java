@@ -1,10 +1,7 @@
 package com.andreiDumitriu.Kitesurfing;
 
 import com.andreiDumitriu.Kitesurfing.model.Location;
-import com.andreiDumitriu.Kitesurfing.model.Role;
-import com.andreiDumitriu.Kitesurfing.model.User;
 import com.andreiDumitriu.Kitesurfing.repositories.LocationRepository;
-import com.andreiDumitriu.Kitesurfing.repositories.RoleRepository;
 import com.andreiDumitriu.Kitesurfing.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 

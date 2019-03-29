@@ -19,6 +19,11 @@ public interface UserRepository extends JpaRepository<User,Long>{
     @Query(value = "SELECT id FROM User WHERE username=:name")
     Long getUserIdByName(@Param("name") String userName);
 
+    @Modifying
+    @Query(value = "DELETE FROM favorites WHERE user_id=:userID AND location_id=:locationID",nativeQuery = true)
+    @Transactional
+    void deleteFavorite(@Param("locationID") Long locID,@Param("userID") Long userID);
+
 
 
 }

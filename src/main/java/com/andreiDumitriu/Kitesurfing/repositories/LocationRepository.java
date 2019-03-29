@@ -2,9 +2,7 @@ package com.andreiDumitriu.Kitesurfing.repositories;
 
 import com.andreiDumitriu.Kitesurfing.model.Location;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
@@ -16,5 +14,8 @@ public interface LocationRepository extends JpaRepository<Location, Long>{
 
     @Query("SELECT id,name,longitude,latitude,country,whenToGo FROM Location WHERE windProbability=:wind")
     List<Location> uniqueWind(@Param("wind") int wind);
+
+    @Query("SELECT country FROM Location")
+    List<String> getCountry();
 }
 

@@ -1,4 +1,4 @@
-package com.andreiDumitriu.Kitesurfing;
+package com.andreiDumitriu.Kitesurfing.errorHandling;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
-class LocationNotFoundAdvice{
+class BadFavoriteExceptionAdvice{
 
     @ResponseBody
-    @ExceptionHandler(LocationNotFoundException.class)
+    @ExceptionHandler(BadFavoriteException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String locationNotFoundHandler(LocationNotFoundException ex) {
+    String badFavoriteHandler(BadFavoriteException ex) {
         return ex.getMessage();
     }
 }

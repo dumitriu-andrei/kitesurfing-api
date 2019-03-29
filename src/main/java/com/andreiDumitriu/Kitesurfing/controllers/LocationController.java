@@ -1,7 +1,7 @@
 package com.andreiDumitriu.Kitesurfing.controllers;
 
-import com.andreiDumitriu.Kitesurfing.LocationNotFoundException;
-import com.andreiDumitriu.Kitesurfing.WindNotFoundException;
+import com.andreiDumitriu.Kitesurfing.errorHandling.LocationNotFoundException;
+import com.andreiDumitriu.Kitesurfing.errorHandling.WindNotFoundException;
 import com.andreiDumitriu.Kitesurfing.repositories.LocationRepository;
 import com.andreiDumitriu.Kitesurfing.model.Location;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,7 +43,12 @@ public class LocationController {
             if(windProbability>0 && windProbability<=100) {
                 return repository.uniqueWind(windProbability);
             }
-            else throw new WindNotFoundException();
+            else throw new WindNotFoundException(windProbability);
+        }
+
+        @GetMapping("/spots/countries")
+        List<String> getCountry(){
+            return repository.getCountry();
         }
 
 
