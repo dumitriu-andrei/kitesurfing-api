@@ -2,6 +2,7 @@ package com.andreiDumitriu.Kitesurfing.controllers;
 
 
 import com.andreiDumitriu.Kitesurfing.errorHandling.BadFavoriteException;
+import com.andreiDumitriu.Kitesurfing.errorHandling.LocationNotFoundException;
 import com.andreiDumitriu.Kitesurfing.repositories.UserRepository;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -53,7 +54,7 @@ public class UserInfoController {
             userRepo.deleteFavorite(id, userID);
             }
             catch(Exception e){
-                throw new BadFavoriteException(id);
+                throw new LocationNotFoundException(id);
             }
 
         return "Succes!";

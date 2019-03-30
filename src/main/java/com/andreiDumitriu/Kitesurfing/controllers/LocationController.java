@@ -5,6 +5,7 @@ import com.andreiDumitriu.Kitesurfing.errorHandling.LocationNotFoundException;
 import com.andreiDumitriu.Kitesurfing.errorHandling.WindNotFoundException;
 import com.andreiDumitriu.Kitesurfing.repositories.LocationRepository;
 import com.andreiDumitriu.Kitesurfing.model.Location;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -59,6 +60,7 @@ public class LocationController {
 
         @GetMapping("/spots/favorites")
         List<Object> getFav(){return repository.getFav();}
+
 
 
 
