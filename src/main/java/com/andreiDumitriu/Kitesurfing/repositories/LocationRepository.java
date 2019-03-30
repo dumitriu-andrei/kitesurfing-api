@@ -17,5 +17,8 @@ public interface LocationRepository extends JpaRepository<Location, Long>{
 
     @Query("SELECT country FROM Location")
     List<String> getCountry();
+
+    @Query(value = "SELECT l.name FROM Location l INNER JOIN favorites f ON l.id = f.location_id",nativeQuery = true)
+    List<Object> getFav();
 }
 

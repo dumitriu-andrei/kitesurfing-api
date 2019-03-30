@@ -57,6 +57,9 @@ public class LocationController {
             return repository.getCountry();
         }
 
+        @GetMapping("/spots/favorites")
+        List<Object> getFav(){return repository.getFav();}
+
 
 
 }

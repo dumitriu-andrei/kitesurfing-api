@@ -20,11 +20,10 @@ public class UserValidator implements Validator{
         return User.class.equals(aClass);
     }
 
-    @Override   //username and password validation method
+    @Override
     public void validate(Object obj, Errors err){
         User user = (User) obj;
 
-        //username validation
         ValidationUtils.rejectIfEmptyOrWhitespace(err,"username","NotEmpty");
         if (user.getUsername().length()<5 || user.getUsername().length()>20){
             err.rejectValue("username","Size.userForm.username");
@@ -33,7 +32,6 @@ public class UserValidator implements Validator{
             err.rejectValue("username","Duplicate.userForm.username");
         }
 
-        //password validation
         ValidationUtils.rejectIfEmptyOrWhitespace(err,"password","NotEmpty");
         if (user.getPassword().length()<8 || user.getPassword().length()>20){
             err.rejectValue("password","Size.userForm.password");
