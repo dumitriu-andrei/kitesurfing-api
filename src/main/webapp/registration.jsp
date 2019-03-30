@@ -34,11 +34,11 @@
                 </div>
             </spring:bind>
 
-            <spring:bind path="passwordConfirmation">
+            <spring:bind path="passwordConfirm">
                 <div class="form-group ${status.error ? 'has-error' : ''}">
-                    <form:input type="password" path="passwordConfirmation" class="form-control"
+                    <form:input type="password" path="passwordConfirm" class="form-control"
                                 placeholder="Confirm your password"></form:input>
-                    <form:errors path="passwordConfirmation"></form:errors>
+                    <form:errors path="passwordConfirm"></form:errors>
                 </div>
             </spring:bind>
 
